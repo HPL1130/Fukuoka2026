@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>福岡・熊本 秋楓悠旅｜五日 SPA 行程手冊</title>
+<title>福岡・熊本 秋楓悠旅｜終極版 SPA 手冊</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -13,630 +13,240 @@
     body{
         font-family:"Microsoft JhengHei","微軟正黑體",sans-serif;
         background-color:#fdfaf5;
-        background-image:
-        radial-gradient(#ebe5db 1.2px, transparent 1.2px);
+        background-image: radial-gradient(#ebe5db 1.2px, transparent 1.2px);
         background-size:28px 28px;
         color:#374151;
         scroll-behavior:smooth;
     }
 
-    .tab-content{
-        display:none;
-    }
-
-    .tab-content.active{
-        display:block;
-        animation:fadeIn .45s ease;
-    }
+    .tab-content{ display:none; }
+    .tab-content.active{ display:block; animation:fadeIn .45s ease; }
 
     @keyframes fadeIn{
-        from{
-            opacity:0;
-            transform:translateY(10px);
-        }
-        to{
-            opacity:1;
-            transform:translateY(0);
-        }
+        from{ opacity:0; transform:translateY(10px); }
+        to{ opacity:1; transform:translateY(0); }
     }
 
-    .nav-link{
-        transition:.25s;
-        position:relative;
-    }
-
-    .nav-active{
-        color:#c2410c;
-        border-bottom:2px solid #c2410c;
-        font-weight:bold;
-    }
+    .nav-link{ transition:.25s; position:relative; }
+    .nav-active{ color:#c2410c; border-bottom:2px solid #c2410c; font-weight:bold; }
 
     .hand-drawn{
         border:2px solid #4b5563;
-        border-radius:
-        22px 8px 20px 8px/
-        8px 18px 8px 22px;
+        border-radius: 22px 8px 20px 8px/8px 18px 8px 22px;
     }
 
     .timeline-line::before{
-        content:'';
-        position:absolute;
-        left:20px;
-        top:0;
-        bottom:0;
-        width:2px;
-        background:
-        linear-gradient(
-            to bottom,
-            #e5e7eb,
-            #9ca3af,
-            #e5e7eb
-        );
+        content:''; position:absolute; left:20px; top:0; bottom:0; width:2px;
+        background: linear-gradient(to bottom, #e5e7eb, #9ca3af, #e5e7eb);
     }
 
-    .food-card.hide{
-        display:none;
-    }
-
-    .card-hover{
-        transition:.25s;
-    }
-
-    .card-hover:hover{
-        transform:translateY(-4px);
-        box-shadow:0 12px 25px rgba(0,0,0,.08);
-    }
+    .food-card.hide, .souvenir-card.hide{ display:none; }
+    .card-hover{ transition:.25s; }
+    .card-hover:hover{ transform:translateY(-4px); box-shadow:0 12px 25px rgba(0,0,0,.08); }
 </style>
 </head>
 
 <body class="leading-relaxed">
 
 <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200">
-
-<div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
-
-<div class="text-xl md:text-2xl font-black text-stone-800">
-🍁 福岡・熊本 秋旅
-</div>
-
-<div class="flex gap-4 md:gap-8 text-sm md:text-base">
-
-<button onclick="switchTab('summary')"
-class="nav-link nav-active"
-id="btn-summary">
-總覽
-</button>
-
-<button onclick="switchTab('itinerary')"
-class="nav-link"
-id="btn-itinerary">
-行程
-</button>
-
-<button onclick="switchTab('food')"
-class="nav-link"
-id="btn-food">
-美食
-</button>
-
-<button onclick="switchTab('prep')"
-class="nav-link"
-id="btn-prep">
-準備
-</button>
-
-</div>
-</div>
+    <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+        <div class="text-xl md:text-2xl font-black text-stone-800">🍁 福岡・熊本 完勝旅</div>
+        <div class="flex gap-4 md:gap-6 text-xs md:text-base overflow-x-auto">
+            <button onclick="switchTab('summary')" class="nav-link nav-active whitespace-nowrap" id="btn-summary">總覽</button>
+            <button onclick="switchTab('itinerary')" class="nav-link whitespace-nowrap" id="btn-itinerary">行程</button>
+            <button onclick="switchTab('food')" class="nav-link whitespace-nowrap" id="btn-food">美食</button>
+            <button onclick="switchTab('souvenir')" class="nav-link whitespace-nowrap" id="btn-souvenir">伴手禮</button>
+            <button onclick="switchTab('prep')" class="nav-link whitespace-nowrap" id="btn-prep">準備</button>
+        </div>
+    </div>
 </nav>
 
 <main class="max-w-6xl mx-auto px-6 py-10">
 
-<section id="summary"
-class="tab-content active space-y-8">
+<section id="summary" class="tab-content active space-y-8">
+    <div class="bg-stone-800 rounded-3xl p-8 text-white shadow-xl">
+        <h1 class="text-3xl md:text-5xl font-black leading-tight">福岡・熊本<br>秋楓・聖誕・購物饗宴</h1>
+        <p class="opacity-80 mt-4">2026 / 11 / 26 - 11 / 30 ｜ 同事 6 人｜高完成度攻略</p>
+    </div>
 
-<div class="bg-stone-800 rounded-3xl p-8 text-white shadow-xl">
-
-<h1 class="text-3xl md:text-5xl font-black leading-tight">
-福岡・熊本<br>
-秋楓悠閒美食旅
-</h1>
-
-<p class="opacity-80 mt-4">
-2026 / 11 / 26 - 11 / 30 ｜ 同事 6 人旅行
-</p>
-
-<p class="opacity-70 text-sm mt-2">
-博多定點住宿｜低疲勞｜文化美食｜購物散策｜楓葉季
-</p>
-
-</div>
-
-<div class="grid lg:grid-cols-3 gap-6">
-
-<div class="lg:col-span-2 bg-white p-6 hand-drawn">
-
-<h2 class="text-2xl font-bold text-stone-800 mb-5">
-📊 每日交通移動負荷預估
-</h2>
-
-<div class="h-72">
-<canvas id="travelChart"></canvas>
-</div>
-
-</div>
-
-<div class="bg-orange-50 p-6 hand-drawn border-orange-200">
-
-<h2 class="text-2xl font-bold text-orange-900 mb-4">
-✨ 本次旅遊特色
-</h2>
-
-<ul class="space-y-3 text-sm text-stone-700">
-
-<li>✓ 嚴選熊本城核心體驗</li>
-<li>✓ 太宰府深度楓葉散策</li>
-<li>✓ 中洲屋台河畔夜色</li>
-<li>✓ LaLaport 實體鋼彈震撼表演</li>
-<li>✓ 博多聖誕點燈季市集</li>
-<li>✓ 購物與自由活動時間充足</li>
-
-</ul>
-
-</div>
-
-</div>
-
-<div class="grid md:grid-cols-3 gap-6">
-
-<div class="bg-white p-6 hand-drawn">
-<h3 class="font-bold text-lg mb-3">
-🏨 建議住宿
-</h3>
-
-<p class="text-sm text-stone-600">
-博多站筑紫口周邊最適合 6 人：
-交通集中、藥妝採買方便、可快速回飯店休息。
-</p>
-</div>
-
-<div class="bg-white p-6 hand-drawn">
-<h3 class="font-bold text-lg mb-3">
-🚄 交通重點
-</h3>
-
-<p class="text-sm text-stone-600">
-熊本來回使用九州新幹線(40min)，
-太宰府使用西鐵二日市轉乘最為經典。
-</p>
-</div>
-
-<div class="bg-white p-6 hand-drawn">
-<h3 class="font-bold text-lg mb-3">
-🧣 11 月天氣
-</h3>
-
-<p class="text-sm text-stone-600">
-平均 10-16 度，早晚溫差大。
-建議內穿發熱衣，外搭擋風防潑水外套。
-</p>
-</div>
-
-</div>
-
+    <div class="grid lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-white p-6 hand-drawn">
+            <h2 class="text-2xl font-bold text-stone-800 mb-5">📊 每日行程豐富度與體力負荷</h2>
+            <div class="h-72"><canvas id="travelChart"></canvas></div>
+        </div>
+        <div class="bg-orange-50 p-6 hand-drawn border-orange-200">
+            <h2 class="text-2xl font-bold text-orange-900 mb-4">✨ 升級亮點</h2>
+            <ul class="space-y-3 text-sm text-stone-700">
+                <li>✓ <b>深夜採買</b>：中洲唐吉訶德免稅不間斷</li>
+                <li>✓ <b>絕美地標</b>：福岡塔聖誕限定燈光秀</li>
+                <li>✓ <b>美食拼圖</b>：豚骨三本柱 + 熊本馬肉 + 明太子</li>
+                <li>✓ <b>拍照聖地</b>：大濠星巴克 + 太宰府隈研吾設計</li>
+                <li>✓ <b>電器巡禮</b>：Yodobashi/Bic Camera 必買</li>
+            </ul>
+        </div>
+    </div>
 </section>
 
-<section id="itinerary"
-class="tab-content space-y-10">
+<section id="itinerary" class="tab-content space-y-10">
+    <h2 class="text-3xl font-black border-l-4 border-orange-700 pl-4">五日行程・拍照名場面</h2>
 
-<h2 class="text-3xl font-black border-l-4 border-orange-700 pl-4">
-五日完整行程
-</h2>
+    <div class="relative pl-12 timeline-line">
+        <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-stone-800 text-white flex items-center justify-center font-bold z-10">1</div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-100">
+            <h3 class="text-2xl font-black text-orange-800">11/26 (四) 福岡點燈與深夜採買</h3>
+            <p class="mt-3 text-stone-600">博多飯店 ➜ 站前光之街 ➜ 運河城 ➜ <b>中洲唐吉訶德 (深夜採買)</b> ➜ 中洲屋台晚餐 (拍照：中洲河畔夜景)</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Don+Quijote+Nakasu" target="_blank" class="text-blue-600 underline text-xs mt-3 block">中洲 Donki 導航 ➔</a>
+        </div>
+    </div>
 
-<div class="relative pl-12 timeline-line">
+    <div class="relative pl-12 timeline-line">
+        <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-orange-700 text-white flex items-center justify-center font-bold z-10">2</div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-orange-100">
+            <h3 class="text-2xl font-black text-orange-900">11/27 (五) 熊本壯麗與電器大採購</h3>
+            <p class="mt-3 text-stone-600">新幹線 ➜ 熊本城天守閣 ➜ <b>城彩苑 (必買熊本熊/必吃馬肉刺身)</b> ➜ 傍晚回博多 ➜ <b>Yodobashi/Bic Camera (電器聖地)</b></p>
+            <div class="flex gap-4">
+                <a href="https://www.google.com/maps/search/?api=1&query=Josaien+Kumamoto" target="_blank" class="text-blue-600 underline text-xs mt-3 block">城彩苑 ➔</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Yodobashi+Multimedia+Hakata" target="_blank" class="text-blue-600 underline text-xs mt-3 block">博多 Yodobashi ➔</a>
+            </div>
+        </div>
+    </div>
 
-<div class="absolute left-0 top-0
-w-10 h-10 rounded-full
-bg-stone-800 text-white
-flex items-center justify-center
-font-bold z-10">
-1
-</div>
+    <div class="relative pl-12 timeline-line">
+        <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-orange-700 text-white flex items-center justify-center font-bold z-10">3</div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-orange-100">
+            <h3 class="text-2xl font-black text-orange-900">11/28 (六) 太宰府美學與天神明太子</h3>
+            <p class="mt-3 text-stone-600">太宰府天滿宮 ➜ <b>隈研吾星巴克 (拍照點)</b> ➜ 天神地下街 ➜ <b>福太郎/稚加榮明太子採購</b></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Dazaifu+Tenmangu+Starbucks" target="_blank" class="text-blue-600 underline text-xs mt-3 block">太宰府星巴克 ➔</a>
+        </div>
+    </div>
 
-<div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-100">
+    <div class="relative pl-12 timeline-line">
+        <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-orange-700 text-white flex items-center justify-center font-bold z-10">4</div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-orange-100">
+            <h3 class="text-2xl font-black text-orange-900">11/29 (日) 公園慢活與福岡塔地標</h3>
+            <p class="mt-3 text-stone-600"><b>大濠公園星巴克 (拍照點)</b> ➜ LaLaport 鋼彈 ➜ <b>福岡塔夜景 (地標合照)</b></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Fukuoka+Tower" target="_blank" class="text-blue-600 underline text-xs mt-3 block">福岡塔 ➔</a>
+        </div>
+    </div>
 
-<h3 class="text-2xl font-black text-orange-800">
-11/26（四）福岡初見日
-</h3>
-
-<p class="mt-3 text-stone-600">
-福岡機場 ➜ 博多飯店 Check-in ➜ JR 博多 City 屋頂夜景 ➜
-博多聖誕市集 ➜ Canal City 運河城 ➜ 中洲屋台晚餐
-</p>
-
-<div class="grid md:grid-cols-2 gap-4 mt-6">
-
-<div class="bg-orange-50 rounded-2xl p-4 text-sm">
-<h4 class="font-bold mb-2">📍 必看重點</h4>
-<ul class="space-y-1">
-<li>• JR 博多站前光之街燈海</li>
-<li>• Canal City 音樂噴泉秀</li>
-</ul>
-</div>
-
-<div class="bg-stone-50 rounded-2xl p-4 text-sm">
-<h4 class="font-bold mb-2">🚇 交通建議</h4>
-<p>福岡地鐵空港線 + 雙腿漫步</p>
-</div>
-
-</div>
-
-<div class="mt-5 flex flex-wrap gap-3">
-
-<a href="https://www.google.com/maps/search/?api=1&query=JR+博多+City"
-target="_blank"
-class="text-blue-600 underline text-sm font-bold">
-JR 博多 City 導航 ➔
-</a>
-
-<a href="https://www.google.com/maps/search/?api=1&query=博多運河城"
-target="_blank"
-class="text-blue-600 underline text-sm font-bold">
-博多運河城 ➔
-</a>
-
-</div>
-
-</div>
-</div>
-
-<div class="relative pl-12 timeline-line">
-
-<div class="absolute left-0 top-0
-w-10 h-10 rounded-full
-bg-orange-700 text-white
-flex items-center justify-center
-font-bold z-10">
-2
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow-sm border border-orange-100">
-
-<h3 class="text-2xl font-black text-orange-900">
-11/27（五）熊本城・城彩苑
-</h3>
-
-<p class="mt-3 text-stone-600">
-博多 ➜ 九州新幹線 (約40分) ➜ 熊本城天守閣 ➜ 櫻之馬場 城彩苑 ➜
-熊本特色美食午餐 ➜ 傍晚返回博多 ➜ 天神購物
-</p>
-
-<div class="mt-5 flex flex-wrap gap-3">
-
-<a href="https://www.google.com/maps/search/?api=1&query=熊本城"
-target="_blank"
-class="text-blue-600 underline text-sm font-bold">
-熊本城 ➔
-</a>
-
-<a href="https://www.google.com/maps/search/?api=1&query=城彩苑"
-target="_blank"
-class="text-blue-600 underline text-sm font-bold">
-城彩苑 ➔
-</a>
-
-</div>
-
-</div>
-</div>
-
-<div class="relative pl-12 timeline-line">
-
-<div class="absolute left-0 top-0
-w-10 h-10 rounded-full
-bg-orange-700 text-white
-flex items-center justify-center
-font-bold z-10">
-3
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow-sm border border-orange-100">
-
-<h3 class="text-2xl font-black text-orange-900">
-11/28（六）太宰府・天神購物
-</h3>
-
-<p class="mt-3 text-stone-600">
-太宰府天滿宮 ➜ 表參道散策 ➜ 隈研吾星巴克 ➜ 梅枝餅嚐鮮 ➜
-返回福岡 ➜ 天神地下街／天神百貨全面購物
-</p>
-
-<div class="mt-5 flex flex-wrap gap-3">
-
-<a href="https://www.google.com/maps/search/?api=1&query=太宰府天滿宮"
-target="_blank"
-class="text-blue-600 underline text-sm font-bold">
-太宰府天滿宮 ➔
-</a>
-
-<a href="https://www.google.com/maps/search/?api=1&query=天神地下街"
-target="_blank"
-class="text-blue-600 underline text-sm font-bold">
-天神地下街 ➔
-</a>
-
-</div>
-
-</div>
-</div>
-
-<div class="relative pl-12 timeline-line">
-
-<div class="absolute left-0 top-0
-w-10 h-10 rounded-full
-bg-orange-700 text-white
-flex items-center justify-center
-font-bold z-10">
-4
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow-sm border border-orange-100">
-
-<h3 class="text-2xl font-black text-orange-900">
-11/29（日）大濠公園・鋼彈・TeamLab
-</h3>
-
-<p class="mt-3 text-stone-600">
-大濠公園湖畔散步 ➜ 福岡城跡 ➜ TeamLab Forest 沉浸藝術 ➜
-LaLaport 福岡實體鋼彈 ➜ 晚間自由採買
-</p>
-
-<div class="mt-5 flex flex-wrap gap-3">
-
-<a href="https://www.google.com/maps/search/?api=1&query=大濠公園"
-target="_blank"
-class="text-blue-600 underline text-sm font-bold">
-大濠公園 ➔
-</a>
-
-<a href="https://www.google.com/maps/search/?api=1&query=LaLaport+福岡"
-target="_blank"
-class="text-blue-600 underline text-sm font-bold">
-LaLaport 福岡 ➔
-</a>
-
-</div>
-
-</div>
-</div>
-
-<div class="relative pl-12 timeline-line">
-
-<div class="absolute left-0 top-0
-w-10 h-10 rounded-full
-bg-stone-800 text-white
-flex items-center justify-center
-font-bold z-10">
-5
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-100">
-
-<h3 class="text-2xl font-black text-orange-800">
-11/30（一）博多文化散策返程
-</h3>
-
-<p class="mt-3 text-stone-600">
-櫛田神社 ➜ 東長寺大佛 ➜ 川端通商店街最後採買 ➜
-午餐後前往福岡機場 ➜ 賦歸
-</p>
-
-<div class="mt-5 flex flex-wrap gap-3">
-
-<a href="https://www.google.com/maps/search/?api=1&query=櫛田神社"
-target="_blank"
-class="text-blue-600 underline text-sm font-bold">
-櫛田神社 ➔
-</a>
-
-<a href="https://www.google.com/maps/search/?api=1&query=東長寺"
-target="_blank"
-class="text-blue-600 underline text-sm font-bold">
-東長寺 ➔
-</a>
-
-</div>
-
-</div>
-</div>
-
+    <div class="relative pl-12 timeline-line">
+        <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-stone-800 text-white flex items-center justify-center font-bold z-10">5</div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-100">
+            <h3 class="text-2xl font-black text-orange-800">11/30 (一) 文化洗禮與伴手禮補貨</h3>
+            <p class="mt-3 text-stone-600">櫛田神社 ➜ 東長寺大佛 ➜ 川端通商店街最後補貨 ➜ 機場</p>
+        </div>
+    </div>
 </section>
 
-<section id="food"
-class="tab-content space-y-8">
+<section id="food" class="tab-content space-y-8">
+    <div class="flex flex-wrap gap-3">
+        <button class="filter-btn bg-orange-700 text-white px-5 py-2 rounded-full font-bold" data-filter="all">全部</button>
+        <button class="filter-btn bg-white px-5 py-2 rounded-full border" data-filter="ramen">豚骨三本柱</button>
+        <button class="filter-btn bg-white px-5 py-2 rounded-full border" data-filter="special">靈魂特色</button>
+    </div>
 
-<div class="flex flex-wrap gap-3">
-
-<button class="filter-btn bg-orange-700 text-white px-4 py-2 rounded-full"
-data-filter="all">
-全部
-</button>
-
-<button class="filter-btn bg-white px-4 py-2 rounded-full border"
-data-filter="ramen">
-拉麵
-</button>
-
-<button class="filter-btn bg-white px-4 py-2 rounded-full border"
-data-filter="classic">
-經典名店
-</button>
-
-<button class="filter-btn bg-white px-4 py-2 rounded-full border"
-data-filter="dessert">
-甜點下午茶
-</button>
-
-</div>
-
-<div class="grid md:grid-cols-2 gap-5">
-
-<div class="food-card bg-white p-5 hand-drawn shadow-sm card-hover" data-category="ramen">
-<h3 class="font-bold text-red-800 text-xl">博多一雙</h3>
-<p class="text-sm text-stone-500 mt-2">濃厚系豚骨拉麵，擁有「豚骨卡布奇諾」美名，口感極致濃郁。</p>
-<a href="https://www.google.com/maps/search/?api=1&query=博多一雙" target="_blank" class="text-blue-600 underline text-xs mt-3 inline-block">地圖 ➔</a>
-</div>
-
-<div class="food-card bg-white p-5 hand-drawn shadow-sm card-hover" data-category="ramen">
-<h3 class="font-bold text-red-800 text-xl">一蘭拉麵 總本店</h3>
-<p class="text-sm text-stone-500 mt-2">經典個人隔間設計。位於中洲的總本店建築本身即是地標，整棟紅燈籠非常壯觀。</p>
-<a href="https://www.google.com/maps/search/?api=1&query=一蘭拉麵+總本店" target="_blank" class="text-blue-600 underline text-xs mt-3 inline-block">地圖 ➔</a>
-</div>
-
-<div class="food-card bg-white p-5 hand-drawn shadow-sm card-hover" data-category="classic">
-<h3 class="font-bold text-red-800 text-xl">博多華味鳥</h3>
-<p class="text-sm text-stone-500 mt-2">福岡必吃水炊鍋。湯頭醇厚、雞肉鮮甜，最後的雜炊更是精華。</p>
-<a href="https://www.google.com/maps/search/?api=1&query=博多華味鳥" target="_blank" class="text-blue-600 underline text-xs mt-3 inline-block">地圖 ➔</a>
-</div>
-
-<div class="food-card bg-white p-5 hand-drawn shadow-sm card-hover" data-category="classic">
-<h3 class="font-bold text-red-800 text-xl">One Karubi Premium</h3>
-<p class="text-sm text-stone-500 mt-2">精緻燒肉吃到飽，肉質極佳，天神與中洲分店適合多人聚餐。</p>
-<a href="https://www.google.com/maps/search/?api=1&query=One+Karubi+Premium" target="_blank" class="text-blue-600 underline text-xs mt-3 inline-block">地圖 ➔</a>
-</div>
-
-<div class="food-card bg-white p-5 hand-drawn shadow-sm card-hover" data-category="classic">
-<h3 class="font-bold text-red-800 text-xl">稚加榮 割烹</h3>
-<p class="text-sm text-stone-500 mt-2">擁有巨大室內魚池，午間套餐 CP 值超高，辛子明太子可盡情享用。</p>
-<a href="https://www.google.com/maps/search/?api=1&query=稚加榮+福岡本店" target="_blank" class="text-blue-600 underline text-xs mt-3 inline-block">地圖 ➔</a>
-</div>
-
-<div class="food-card bg-white p-5 hand-drawn shadow-sm card-hover" data-category="dessert">
-<h3 class="font-bold text-red-800 text-xl">I'm Donut ?</h3>
-<p class="text-sm text-stone-500 mt-2">福岡排隊奇蹟。生甜甜圈口感綿密紮實，建議開店前即前往。</p>
-<a href="https://www.google.com/maps/search/?api=1&query=I'm+Donut?+福岡" target="_blank" class="text-blue-600 underline text-xs mt-3 inline-block">地圖 ➔</a>
-</div>
-
-<div class="food-card bg-white p-5 hand-drawn shadow-sm card-hover" data-category="dessert">
-<h3 class="font-bold text-red-800 text-xl">太宰府 梅枝餅</h3>
-<p class="text-sm text-stone-500 mt-2">表參道必吃點心，現烤熱騰騰的外皮與甜而不膩的紅豆餡。</p>
-<a href="https://www.google.com/maps/search/?api=1&query=太宰府+梅枝餅" target="_blank" class="text-blue-600 underline text-xs mt-3 inline-block">地圖 ➔</a>
-</div>
-
-<div class="food-card bg-white p-5 hand-drawn shadow-sm card-hover" data-category="dessert">
-<h3 class="font-bold text-red-800 text-xl">茶寮伊藤園 太宰府店</h3>
-<p class="text-sm text-stone-500 mt-2">充滿禪意的日式茶寮，抹茶聖代與日式庭院讓人忘卻旅途疲勞。</p>
-<a href="https://www.google.com/maps/search/?api=1&query=茶寮伊藤園+太宰府" target="_blank" class="text-blue-600 underline text-xs mt-3 inline-block">地圖 ➔</a>
-</div>
-
-</div>
-
+    <div class="grid md:grid-cols-2 gap-5">
+        <div class="food-card bg-white p-6 hand-drawn card-hover" data-category="ramen">
+            <h3 class="font-bold text-red-800 text-xl">博多一幸舍 (泡系代表)</h3>
+            <p class="text-sm text-stone-500 mt-2">福岡豚骨三本柱之一。綿密的油脂泡沫與強烈的豚骨香氣，是同事團不可錯過的經典。</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ikkousha+Ramen+Hakata" target="_blank" class="text-blue-500 text-xs underline mt-2 block">地圖查看 ➔</a>
+        </div>
+        <div class="food-card bg-white p-6 hand-drawn card-hover" data-category="ramen">
+            <h3 class="font-bold text-red-800 text-xl">博多一雙 / 一蘭</h3>
+            <p class="text-sm text-stone-500 mt-2">泡沫系與傳統派的終極選擇。來到福岡，這兩家都是基本的「打卡標配」。</p>
+        </div>
+        <div class="food-card bg-white p-6 hand-drawn card-hover" data-category="special">
+            <h3 class="font-bold text-red-800 text-xl">熊本城彩苑 馬肉刺身</h3>
+            <p class="text-sm text-stone-500 mt-2">來到熊本沒吃馬肉就不完整！城彩苑提供輕便裝，同事們可一人一份嚐鮮。</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Josaien+Horse+Sashimi" target="_blank" class="text-blue-500 text-xs underline mt-2 block">地圖查看 ➔</a>
+        </div>
+        <div class="food-card bg-white p-6 hand-drawn card-hover" data-category="special">
+            <h3 class="font-bold text-red-800 text-xl">福太郎 / 稚加榮明太子</h3>
+            <p class="text-sm text-stone-500 mt-2">福岡的靈魂食物。推薦福太郎的明太子仙貝 (Menbei) 與稚加榮的管狀明太子。</p>
+        </div>
+    </div>
 </section>
 
-<section id="prep"
-class="tab-content space-y-8">
+<section id="souvenir" class="tab-content space-y-8">
+    <h2 class="text-3xl font-black text-stone-800">🛍️ 福岡・熊本 必買伴手禮清單</h2>
+    
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 hand-drawn border-orange-200">
+            <h3 class="font-black text-orange-800 text-xl mb-4">🍪 食品類</h3>
+            <ul class="space-y-3 text-sm text-stone-700">
+                <li>• <b>福太郎 Menbei</b>：明太子口味仙貝，脆口微辣。</li>
+                <li>• <b>Press Butter Sand</b>：福岡限定「草莓口味」焦糖奶油夾心。</li>
+                <li>• <b>博多通饅頭</b>：濃郁奶香與豆沙皮，九州銷售冠軍。</li>
+                <li>• <b>阿蘇牛乳餅乾</b>：熊本直送的濃厚乳香。</li>
+            </ul>
+        </div>
+        <div class="bg-white p-6 hand-drawn border-blue-200">
+            <h3 class="font-black text-blue-800 text-xl mb-4">⚡ 電器與生活類</h3>
+            <ul class="space-y-3 text-sm text-stone-700">
+                <li>• <b>美容電器</b>：Panasonic 吹風機、Dyson 系列。</li>
+                <li>• <b>廚房家電</b>：象印/虎牌 壓力 IH 電子鍋。</li>
+                <li>• <b>趣味周邊</b>：熊本熊 (Kumamon) 聯名商品。</li>
+                <li>• <b>藥妝採買</b>：EVE 止痛、Wakamoto、酒類免稅。</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
-<div class="bg-red-50 p-8 hand-drawn border-red-200">
-
-<h2 class="text-3xl font-black text-red-900 mb-8">
-🎒 行前數位準備
-</h2>
-
-<div class="space-y-6">
-
-<div class="flex items-start">
-<div class="w-10 h-10 rounded-xl bg-red-800 text-white flex items-center justify-center font-bold mr-4 shrink-0">1</div>
-<div>
-<h3 class="font-bold text-lg">Visit Japan Web</h3>
-<p class="text-sm text-red-700 mt-1">出發前 3 日完成填寫，並截圖 QR Code 存放於手機相簿。</p>
-</div>
-</div>
-
-<div class="flex items-start">
-<div class="w-10 h-10 rounded-xl bg-stone-800 text-white flex items-center justify-center font-bold mr-4 shrink-0">2</div>
-<div>
-<h3 class="font-bold text-lg">JR 九州 App</h3>
-<p class="text-sm text-stone-600 mt-1">可用於預約熊本新幹線指定席，確保同事 6 人坐在一起。</p>
-</div>
-</div>
-
-<div class="flex items-start">
-<div class="w-10 h-10 rounded-xl bg-stone-800 text-white flex items-center justify-center font-bold mr-4 shrink-0">3</div>
-<div>
-<h3 class="font-bold text-lg">PayPay / Suica 加值</h3>
-<p class="text-sm text-stone-600 mt-1">福岡多數小店支援手機支付，建議事先完成卡片綁定。</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
+<section id="prep" class="tab-content space-y-8">
+    <div class="bg-red-50 p-8 hand-drawn border-red-200">
+        <h2 class="text-3xl font-black text-red-900 mb-8">🎒 出發前數位備忘</h2>
+        <div class="space-y-4 text-sm">
+            <p>✓ <b>Visit Japan Web</b>：截圖入境與海關 QR Code。</p>
+            <p>✓ <b>折扣券截圖</b>：唐吉訶德、Bic Camera 免稅+額外折扣券。</p>
+            <p>✓ <b>JR 九州 App</b>：確保新幹線座位全體連號。</p>
+        </div>
+    </div>
 </section>
 
 </main>
 
 <footer class="py-12 text-center text-stone-400 text-xs">
-秋之九州旅情 ｜ 定點博多版 ｜ 福岡・熊本 ｜ 祝 旅途順利
+    福岡記憶拼圖 ｜ 同事旅遊全勝版 ｜ 2026 Autumn
 </footer>
 
 <script>
-// TAB SWITCHING
 function switchTab(tabId){
-    document.querySelectorAll('.tab-content').forEach(tab=>{
-        tab.classList.remove('active');
-    });
+    document.querySelectorAll('.tab-content').forEach(tab=>{ tab.classList.remove('active'); });
     document.getElementById(tabId).classList.add('active');
-    document.querySelectorAll('.nav-link').forEach(btn=>{
-        btn.classList.remove('nav-active');
-    });
+    document.querySelectorAll('.nav-link').forEach(btn=>{ btn.classList.remove('nav-active'); });
     document.getElementById('btn-' + tabId).classList.add('nav-active');
     window.scrollTo(0,0);
 }
 
-// CHART DATA
 window.onload=function(){
     const ctx=document.getElementById('travelChart').getContext('2d');
     new Chart(ctx,{
         type:'bar',
         data:{
-            labels:['D1:福岡','D2:熊本','D3:太宰府','D4:市區','D5:返程'],
+            labels:['D1:採買','D2:熊本城/電器','D3:太宰府','D4:地標拍照','D5:文化'],
             datasets:[{
-                label:'交通負荷指數',
-                data:[35, 70, 55, 45, 20],
+                label:'行程精彩度 (打卡點)',
+                data:[85, 95, 90, 100, 70],
                 backgroundColor:'#c2410c',
                 borderRadius:12
             }]
         },
         options:{
-            responsive:true,
-            maintainAspectRatio:false,
+            responsive:true, maintainAspectRatio:false,
             plugins:{ legend:{ display:false } },
-            scales:{
-                x:{ grid:{ display:false } },
-                y:{ beginAtZero:true, max:100 }
-            }
+            scales:{ x:{ grid:{ display:false } }, y:{ beginAtZero:true, max:110 } }
         }
     });
 };
 
-// FOOD FILTER
-const filterButtons = document.querySelectorAll('.filter-btn');
-const foodCards = document.querySelectorAll('.food-card');
-
-filterButtons.forEach(button=>{
+document.querySelectorAll('.filter-btn').forEach(button=>{
     button.addEventListener('click',()=>{
-        filterButtons.forEach(btn=>{
-            btn.classList.remove('bg-orange-700','text-white');
-            btn.classList.add('bg-white');
-        });
-        button.classList.add('bg-orange-700','text-white');
+        document.querySelectorAll('.filter-btn').forEach(btn=>{ btn.className='filter-btn bg-white px-5 py-2 rounded-full border'; });
+        button.className='filter-btn bg-orange-700 text-white px-5 py-2 rounded-full font-bold';
         const filter = button.dataset.filter;
-        foodCards.forEach(card=>{
-            if(filter==='all' || card.dataset.category===filter){
-                card.classList.remove('hide');
-            } else {
-                card.classList.add('hide');
-            }
+        document.querySelectorAll('.food-card').forEach(card=>{
+            if(filter==='all' || card.dataset.category===filter){ card.classList.remove('hide'); }
+            else { card.classList.add('hide'); }
         });
     });
 });
