@@ -3,47 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>福岡秋楓漫遊 | 水墨圓潤 SPA 導覽</title>
+    <title>福岡秋楓漫遊 | 四分頁完整手冊</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* 全域圓潤字體：微軟正黑體 */
         body {
             font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
-            background-color: #fcfaf2;
-            background-image: radial-gradient(#eceae4 1.5px, transparent 1.5px);
-            background-size: 30px 30px;
+            background-color: #fdfaf5;
+            background-image: radial-gradient(#efebe4 1.2px, transparent 1.2px);
+            background-size: 28px 28px;
             scroll-behavior: smooth;
-            color: #333;
+            color: #374151;
         }
 
-        /* 導覽列與互動標籤 */
         .tab-content { display: none; }
-        .tab-content.active { display: block; animation: inkFade 0.6s ease-in-out; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-out; }
 
-        @keyframes inkFade {
+        @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 手繪感不規則邊框 CSS */
-        .brush-border {
-            border: 2px solid #4a4a4a;
-            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+        /* 手繪感不規則邊框 */
+        .hand-drawn {
+            border: 2px solid #4b5563;
+            border-radius: 20px 8px 18px 8px/8px 18px 8px 20px;
         }
 
-        .nav-link { transition: all 0.3s ease; position: relative; cursor: pointer; }
-        .nav-active { color: #b91c1c; font-weight: bold; }
-        .nav-active::after {
-            content: '🍁';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-        }
+        .nav-link { cursor: pointer; transition: 0.3s; position: relative; }
+        .nav-active { color: #c2410c; font-weight: bold; border-bottom: 2px solid #c2410c; }
 
-        /* 時間軸水墨線條 */
         .timeline-line::before {
             content: '';
             position: absolute;
@@ -51,258 +41,136 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #ddd, #4a4a4a, #ddd);
+            background: linear-gradient(to bottom, #e5e7eb, #9ca3af, #e5e7eb);
         }
-
-        .maple-leaf-decor { color: #b91c1c; opacity: 0.15; pointer-events: none; user-select: none; }
     </style>
 </head>
 <body class="leading-relaxed">
 
-    <div class="fixed top-10 left-5 maple-leaf-decor text-4xl">🍁</div>
-    <div class="fixed bottom-20 right-10 maple-leaf-decor text-5xl">🍁</div>
-    <div class="fixed top-1/2 right-5 maple-leaf-decor text-3xl">🍁</div>
-
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
-        <div class="max-w-5xl mx-auto px-6 flex justify-between items-center h-20">
-            <div class="text-2xl font-bold text-stone-800 flex items-center">
-                <span class="text-4xl mr-2">🍁</span>
-                <div class="flex flex-col">
-                    <span class="tracking-widest">福岡秋旅</span>
-                    <span class="text-xs font-normal text-stone-400 tracking-tighter">FUKUOKA TRAVEL SPA</span>
-                </div>
-            </div>
-            <div class="hidden md:flex space-x-10 text-lg">
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200">
+        <div class="max-w-5xl mx-auto px-6 flex justify-between items-center h-16">
+            <div class="text-xl font-bold text-stone-800">🍁 福岡秋旅 SPA</div>
+            <div class="flex space-x-4 md:space-x-8">
                 <button onclick="switchTab('summary')" class="nav-link nav-active" id="btn-summary">總覽</button>
-                <button onclick="switchTab('itinerary')" class="nav-link text-stone-600" id="btn-itinerary">每日行蹤</button>
-                <button onclick="switchTab('food')" class="nav-link text-stone-600" id="btn-food">百味地圖</button>
-                <button onclick="switchTab('prep')" class="nav-link text-stone-600" id="btn-prep">行前備忘</button>
+                <button onclick="switchTab('itinerary')" class="nav-link" id="btn-itinerary">行程</button>
+                <button onclick="switchTab('food')" class="nav-link" id="btn-food">百味</button>
+                <button onclick="switchTab('prep')" class="nav-link" id="btn-prep">準備</button>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-6 py-10 relative">
+    <main class="max-w-5xl mx-auto px-6 py-10">
 
-        <section id="summary" class="tab-content active space-y-10">
-            <div class="text-center py-6">
-                <h1 class="text-4xl md:text-6xl font-bold text-stone-800 mb-4">悠閒福岡．手繪秋楓</h1>
-                <p class="text-stone-500 text-xl tracking-widest">一一月二十六日 ➔ 一一月三十日 ｜ 六人圓潤漫遊</p>
+        <section id="summary" class="tab-content active space-y-8">
+            <div class="bg-stone-800 rounded-3xl p-8 text-white shadow-xl">
+                <h1 class="text-3xl font-bold mb-2">福岡．秋楓漫遊 (2026)</h1>
+                <p class="opacity-80 text-sm">方案 A：悠閒市區購物與文化之旅</p>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="md:col-span-2 bg-white p-8 brush-border shadow-sm">
-                    <h3 class="text-2xl font-bold mb-6 flex items-center">📊 每日移動負荷預估</h3>
-                    <div class="h-64"><canvas id="travelChart"></canvas></div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="md:col-span-2 bg-white p-6 hand-drawn">
+                    <h3 class="font-bold mb-4">📊 交通移動預估 (分鐘)</h3>
+                    <div class="h-60"><canvas id="travelChart"></canvas></div>
                 </div>
-                <div class="bg-red-50/50 p-8 brush-border border-red-200 flex flex-col justify-center">
-                    <h3 class="text-2xl font-bold mb-4 text-red-900 italic underline underline-offset-8">規劃師筆記</h3>
-                    <p class="text-stone-600 leading-loose">
-                        取消熊本後，行程更為從容。每日車程控制在 1 小時內，保留更多時間在百貨購物與楓葉攝影。
-                        全程入住博多車站，免拖行李，是同事團體的最佳解。
+                <div class="bg-orange-50 p-6 hand-drawn border-orange-200">
+                    <h3 class="font-bold text-orange-900 mb-2">💡 規劃師說</h3>
+                    <p class="text-sm text-stone-600 leading-loose">
+                        取消熊本後，體力負擔減輕 40%。多出的時間可以用在天神商圈的深度購物，或者在大濠公園慢享下午茶。
                     </p>
                 </div>
             </div>
         </section>
 
-        <section id="itinerary" class="tab-content space-y-12">
-            <h2 class="text-4xl font-bold text-stone-800 mb-8 border-l-8 border-red-800 pl-4">每日行程細節</h2>
+        <section id="itinerary" class="tab-content space-y-10">
+            <h2 class="text-2xl font-bold border-l-4 border-orange-600 pl-3">五日詳細行程</h2>
 
             <div class="relative pl-12 timeline-line">
-                <div class="absolute left-0 top-0 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center text-white z-10 font-bold">D1</div>
-                <div class="bg-white p-6 brush-border">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-red-900">11/26 (四) 博多光之祭典</h3>
-                        <span class="text-xs text-stone-400">體力：★☆☆☆☆</span>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="flex flex-col md:flex-row md:justify-between items-start">
-                            <div>
-                                <p class="font-bold text-lg text-stone-800">16:30 | 機場抵達 ➔ 飯店 Check-in</p>
-                                <p class="text-sm text-stone-500">地鐵空港線 (5min)。建議入住博多站筑紫口周邊。</p>
-                            </div>
-                            <a href="https://www.google.com/maps/search/Hakata+Station" target="_blank" class="text-blue-700 underline font-bold mt-2 md:mt-0">地圖導航</a>
-                        </div>
-                        <div class="border-t pt-4 flex flex-col md:flex-row md:justify-between items-start">
-                            <div>
-                                <p class="font-bold text-lg text-stone-800">18:30 | 博多阪急 / AMU Plaza 購物</p>
-                                <p class="text-sm text-stone-500">著名百貨與 B1 伴手禮巡禮。欣賞站前「光之街」點燈。</p>
-                            </div>
-                            <a href="https://www.google.com/maps/search/Hakata+Hankyu" target="_blank" class="text-blue-700 underline font-bold mt-2 md:mt-0">地圖導航</a>
-                        </div>
-                    </div>
+                <div class="absolute left-0 top-0 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center text-white z-10 font-bold">1</div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+                    <h3 class="font-bold text-orange-800">11/26 (四) 博多光之祭</h3>
+                    <p class="text-sm mt-2">機場 ➔ 飯店 ➔ 博多站前聖誕點燈 ➔ 阪急百貨 B1 伴手禮先修。</p>
                 </div>
             </div>
 
             <div class="relative pl-12 timeline-line">
-                <div class="absolute left-0 top-0 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center text-white z-10 font-bold">D2</div>
-                <div class="bg-white p-6 brush-border">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-red-900">11/27 (五) 太宰府楓紅與天神購物</h3>
-                        <span class="text-xs text-stone-400">體力：★★★☆☆</span>
-                    </div>
-                    <div class="space-y-6 text-stone-600">
-                        <div>
-                            <p class="font-bold text-lg text-stone-800">10:00 | 太宰府天滿宮 ＆ 竈門神社</p>
-                            <p class="text-sm">搭乘西鐵 (40min)。賞楓名所與梅枝餅體驗。停留時間：3.5小時。</p>
-                            <a href="https://www.google.com/maps/search/Dazaifu+Tenmangu" target="_blank" class="text-blue-700 underline font-bold mt-1 inline-block">地圖導航</a>
-                        </div>
-                        <div class="border-t pt-4">
-                            <p class="font-bold text-lg text-stone-800">15:00 | 天神商圈百貨 (岩田屋/三越/大丸)</p>
-                            <p class="text-sm">精品、化妝品購物。領取 5% 優惠卡。停留時間：4小時以上。</p>
-                            <a href="https://www.google.com/maps/search/Iwataya+Main+Store" target="_blank" class="text-blue-700 underline font-bold mt-1 inline-block">地圖導航</a>
-                        </div>
-                    </div>
+                <div class="absolute left-0 top-0 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center text-white z-10 font-bold">2</div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+                    <h3 class="font-bold text-orange-800">11/27 (五) 太宰府紅葉名所</h3>
+                    <p class="text-sm mt-2">太宰府天滿宮 ➔ 竈門神社 (紅葉隧道) ➔ 傍晚返回天神戰區 (岩田屋/三越)。</p>
                 </div>
             </div>
 
             <div class="relative pl-12 timeline-line">
-                <div class="absolute left-0 top-0 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center text-white z-10 font-bold">D3</div>
-                <div class="bg-white p-6 brush-border">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-red-900">11/28 (六) 鋼彈大像與大濠美學</h3>
-                        <span class="text-xs text-stone-400">體力：★★☆☆☆</span>
-                    </div>
-                    <div class="space-y-6">
-                        <div>
-                            <p class="font-bold text-lg text-stone-800">10:30 | LaLaport 福岡 (1:1 鋼彈鋼鐵巨像)</p>
-                            <p class="text-sm">拍照聖地與 LoFt 採購。大型購物中心，適合避寒。停留時間：3小時。</p>
-                            <a href="https://www.google.com/maps/search/LaLaport+Fukuoka" target="_blank" class="text-blue-700 underline font-bold mt-1 inline-block">地圖導航</a>
-                        </div>
-                        <div class="border-t pt-4">
-                            <p class="font-bold text-lg text-stone-800">15:00 | 大濠公園 / 福岡市美術館</p>
-                            <p class="text-sm">環湖步道、拍黃色南瓜。氛圍極佳，非常適合團體合照。停留時間：2小時。</p>
-                            <a href="https://www.google.com/maps/search/Ohori+Park" target="_blank" class="text-blue-700 underline font-bold mt-1 inline-block">地圖導航</a>
-                        </div>
-                    </div>
+                <div class="absolute left-0 top-0 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center text-white z-10 font-bold">3</div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+                    <h3 class="font-bold text-orange-800">11/28 (六) 鋼彈巡禮與美學</h3>
+                    <p class="text-sm mt-2">上午 LaLaport 福岡 (看鋼彈表演) ➔ 下午 大濠公園 (南瓜草間彌生/美術館)。</p>
                 </div>
             </div>
 
             <div class="relative pl-12 timeline-line">
-                <div class="absolute left-0 top-0 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center text-white z-10 font-bold">D4</div>
-                <div class="bg-white p-6 brush-border">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-red-900">11/29 (日) 門司港懷舊半日遊</h3>
-                        <span class="text-xs text-stone-400">體力：★★★☆☆</span>
-                    </div>
-                    <div class="space-y-6">
-                        <div>
-                            <p class="font-bold text-lg text-stone-800">10:30 | 門司港懷舊區 ＆ 藍翼橋</p>
-                            <p class="text-sm">JR 特急 Sonic (50min)。洋式建築、燒咖哩午餐。停留時間：4.5小時。</p>
-                            <a href="https://www.google.com/maps/search/Mojiko+Retro" target="_blank" class="text-blue-700 underline font-bold mt-1 inline-block">地圖導航</a>
-                        </div>
-                        <div class="border-t pt-4">
-                            <p class="font-bold text-lg text-stone-800">17:00 | 博多運河城噴泉秀</p>
-                            <p class="text-sm">最後大店鋪補貨 (Muji/Uniqlo)。停留時間：2小時。</p>
-                            <a href="https://www.google.com/maps/search/Canal+City+Hakata" target="_blank" class="text-blue-700 underline font-bold mt-1 inline-block">地圖導航</a>
-                        </div>
-                    </div>
+                <div class="absolute left-0 top-0 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center text-white z-10 font-bold">4</div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+                    <h3 class="font-bold text-orange-800">11/29 (日) 門司港懷舊情調</h3>
+                    <p class="text-sm mt-2">JR 特急音速號 ➔ 門司港散策 ➔ 唐戶市場 (假日限定) ➔ 晚上博多運河城。</p>
                 </div>
             </div>
 
             <div class="relative pl-12 timeline-line">
-                <div class="absolute left-0 top-0 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center text-white z-10 font-bold">D5</div>
-                <div class="bg-white p-6 brush-border">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-red-900">11/30 (一) 神社祈福與賦歸</h3>
-                        <span class="text-xs text-stone-400">體力：★☆☆☆☆</span>
-                    </div>
-                    <div class="space-y-6">
-                        <div>
-                            <p class="font-bold text-lg text-stone-800">10:00 | 櫛田神社 ＆ 舞鶴公園</p>
-                            <p class="text-sm">博多守護神、銀杏步道。離博多站近，移動無壓力。停留時間：1.5小時。</p>
-                            <a href="https://www.google.com/maps/search/Kushida+Shrine" target="_blank" class="text-blue-700 underline font-bold mt-1 inline-block">地圖導航</a>
-                        </div>
-                        <div class="border-t pt-4 bg-stone-50 p-3 rounded-lg">
-                            <p class="font-bold text-lg text-red-800">13:00 | 稚加榮最後午餐 ➔ 14:30 往機場</p>
-                            <p class="text-sm">17:00 航班起飛，建議提早 2.5 小時辦理行李。</p>
-                        </div>
-                    </div>
+                <div class="absolute left-0 top-0 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center text-white z-10 font-bold">5</div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+                    <h3 class="font-bold text-orange-800">11/30 (一) 神社祈福返家</h3>
+                    <p class="text-sm mt-2">櫛田神社 ➔ 川端通商店街最後採買 ➔ 14:30 往機場 ➔ 17:00 航班。</p>
                 </div>
             </div>
         </section>
 
         <section id="food" class="tab-content space-y-8">
-            <h2 class="text-3xl font-bold text-stone-800 flex items-center"><span class="mr-3">🍣</span> 百味地圖</h2>
-            <div class="flex flex-wrap gap-3 mb-6">
-                <button onclick="filterFood('all')" class="food-btn px-6 py-2 brush-border bg-stone-800 text-white">全部</button>
-                <button onclick="filterFood('pot')" class="food-btn px-6 py-2 brush-border bg-white text-stone-800 hover:bg-stone-50">精緻鍋物/割烹</button>
-                <button onclick="filterFood('bbq')" class="food-btn px-6 py-2 brush-border bg-white text-stone-800 hover:bg-stone-50">精品燒肉</button>
-                <button onclick="filterFood('local')" class="food-btn px-6 py-2 brush-border bg-white text-stone-800 hover:bg-stone-50">在地小吃/屋台</button>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6" id="foodGrid">
-                <div class="bg-white p-6 brush-border food-item shadow-sm" data-type="pot">
-                    <h4 class="text-xl font-bold mb-2 text-red-900">博多華味鳥 (水炊鍋)</h4>
-                    <p class="text-sm text-stone-500 mb-4">雞湯濃郁，女性同事極度好評。適合 6 人在大長桌聚餐。</p>
-                    <a href="https://www.google.com/maps/search/Hakata+Hanamidori" target="_blank" class="text-blue-700 underline font-bold">地圖連結 ➔</a>
+            <h2 class="text-2xl font-bold border-l-4 border-red-600 pl-3">🍣 嚴選必吃名單</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white p-5 hand-drawn shadow-sm">
+                    <h4 class="font-bold text-red-800">博多華味鳥</h4>
+                    <p class="text-xs text-stone-500 mt-1">經典水炊鍋，適合第一晚暖胃聚餐。</p>
                 </div>
-                <div class="bg-white p-6 brush-border food-item shadow-sm" data-type="bbq">
-                    <h4 class="text-xl font-bold mb-2 text-red-900">One Karubi Premium</h4>
-                    <p class="text-sm text-stone-500 mb-4">天神站點餐式燒肉吃到飽。肉質極佳，環境安靜優雅。</p>
-                    <a href="https://www.google.com/maps/search/One+Karubi+Premium+Tenjin" target="_blank" class="text-blue-700 underline font-bold">地圖連結 ➔</a>
+                <div class="bg-white p-5 hand-drawn shadow-sm">
+                    <h4 class="font-bold text-red-800">One Karubi Premium</h4>
+                    <p class="text-xs text-stone-500 mt-1">天神精品燒肉吃到飽，適合同事聚會。</p>
                 </div>
-                <div class="bg-white p-6 brush-border food-item shadow-sm" data-type="local">
-                    <h4 class="text-xl font-bold mb-2 text-red-900">中洲屋台街</h4>
-                    <p class="text-sm text-stone-500 mb-4">河畔拍照氛圍滿分。雖然人多，但非常值得體驗一次在地路邊攤。</p>
-                    <a href="https://www.google.com/maps/search/Nakasu+Yatai" target="_blank" class="text-blue-700 underline font-bold">地圖連結 ➔</a>
+                <div class="bg-white p-5 hand-drawn shadow-sm">
+                    <h4 class="font-bold text-red-800">稚加榮 割烹</h4>
+                    <p class="text-xs text-stone-500 mt-1">活魚料理，午間套餐 CP 值極高。</p>
                 </div>
-                <div class="bg-white p-6 brush-border food-item shadow-sm" data-type="pot">
-                    <h4 class="text-xl font-bold mb-2 text-red-900">稚加榮明太子</h4>
-                    <p class="text-sm text-stone-500 mb-4">巨大的室內活魚池，視覺效果一流。最後一頓午餐的首選。</p>
-                    <a href="https://www.google.com/maps/search/Chikae+Fukuoka" target="_blank" class="text-blue-700 underline font-bold">地圖連結 ➔</a>
+                <div class="bg-white p-5 hand-drawn shadow-sm">
+                    <h4 class="font-bold text-red-800">梅枝餅</h4>
+                    <p class="text-xs text-stone-500 mt-1">太宰府表參道名產，現烤最美味。</p>
                 </div>
             </div>
         </section>
 
-        <section id="prep" class="tab-content space-y-10">
-            <h2 class="text-3xl font-bold text-stone-800 flex items-center"><span class="mr-3">🎒</span> 行前備忘錄</h2>
-            
-            <div class="bg-white p-10 brush-border border-red-800 bg-red-50/20">
-                <h3 class="text-2xl font-bold mb-6 text-red-900 italic">⚠️ 入境與數位準備 (必辦)</h3>
+        <section id="prep" class="tab-content space-y-8">
+            <h2 class="text-2xl font-bold border-l-4 border-stone-600 pl-3">🎒 行前核心設定</h2>
+            <div class="bg-red-50 p-8 hand-drawn border-red-200">
+                <h3 class="text-xl font-bold text-red-900 mb-6">⚠️ 出發當日前務必確認：</h3>
                 <div class="space-y-6">
                     <div class="flex items-start">
-                        <span class="text-2xl mr-4">📝</span>
+                        <div class="w-8 h-8 bg-red-800 text-white flex items-center justify-center rounded-lg font-bold mr-4">1</div>
                         <div>
-                            <h4 class="font-bold text-lg">Visit Japan Web (VJW) 申報</h4>
-                            <p class="text-red-700 font-bold underline">提醒：應在出發前日完成填寫，並取得 QR Code 截圖。</p>
-                            <p class="text-sm text-stone-500">入境審查、海關申報皆需此 QR Code。</p>
+                            <h4 class="font-bold">Visit Japan Web (VJW)</h4>
+                            <p class="text-sm text-red-700 underline font-bold">必須在出發前完成填寫並截圖 QR Code。</p>
                         </div>
                     </div>
                     <div class="flex items-start">
-                        <span class="text-2xl mr-4">🚆</span>
+                        <div class="w-8 h-8 bg-stone-800 text-white flex items-center justify-center rounded-lg font-bold mr-4">2</div>
                         <div>
-                            <h4 class="font-bold text-lg">JR 九州官方 App (JR Kyushu)</h4>
-                            <p class="text-sm text-stone-500">用於預約「特急音速號」等班次，且可即時查看月台資訊。</p>
+                            <h4 class="font-bold">JR 九州官方 App</h4>
+                            <p class="text-sm text-stone-600">下載並註冊，查詢班次與特急預約。</p>
                         </div>
                     </div>
                     <div class="flex items-start">
-                        <span class="text-2xl mr-4">🏷️</span>
+                        <div class="w-8 h-8 bg-stone-800 text-white flex items-center justify-center rounded-lg font-bold mr-4">3</div>
                         <div>
-                            <h4 class="font-bold text-lg">百貨 Guest Card (5% Off)</h4>
-                            <p class="text-sm text-stone-500">先確認岩田屋 (Iwataya) 等服務台位置。憑護照領取卡片，購物另享 95 折。</p>
+                            <h4 class="font-bold">百貨 Guest Card (5% Off)</h4>
+                            <p class="text-sm text-stone-600">岩田屋、大丸、三越等，憑護照領取 95 折券。</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-stone-800 text-stone-200 p-10 rounded-3xl shadow-2xl space-y-6">
-                <h3 class="text-xl font-bold text-white flex items-center">
-                    <span class="mr-2">🧤</span> 秋末穿搭建議
-                </h3>
-                <div class="grid md:grid-cols-2 gap-8 text-sm">
-                    <div class="space-y-2 leading-loose">
-                        <p>📍 氣溫範圍：8°C - 16°C</p>
-                        <p>📍 穿著：洋蔥式穿法。內搭薄長袖或發熱衣，外加羊毛大衣或中厚外套。</p>
-                        <p>📍 備註：室內及百貨公司暖氣非常強 (25°C+)，建議圍巾易穿脫為主。</p>
-                    </div>
-                    <div class="border-l border-stone-600 pl-8">
-                        <p class="font-bold text-white mb-2 underline">必帶清單</p>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>護照、電子機票</li>
-                            <li>行動電源 (拍照量大)</li>
-                            <li>休閒散步鞋 (每日步數約一萬)</li>
-                            <li>感冒藥、腸胃藥、止痛藥</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -310,75 +178,37 @@
 
     </main>
 
-    <footer class="py-16 text-center text-stone-400">
-        <p class="text-sm font-bold tracking-widest uppercase">楓情九州 ｜ 旅程順遂</p>
-        <p class="text-xs mt-2 italic opacity-50">Designed by Gemini Traveler v5.0</p>
+    <footer class="py-12 text-center text-stone-400 text-xs">
+        <p>秋之九州旅情 ｜ 圓潤漫遊完整版</p>
     </footer>
 
     <script>
-        // 頁籤切換邏輯
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-
-            document.querySelectorAll('.nav-link').forEach(btn => {
-                btn.classList.remove('nav-active', 'text-stone-800');
-                btn.classList.add('text-stone-600');
-            });
-            const activeBtn = document.getElementById('btn-' + tabId);
-            activeBtn.classList.add('nav-active');
-            activeBtn.classList.remove('text-stone-600');
-            
+            document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('nav-active'));
+            document.getElementById('btn-' + tabId).classList.add('nav-active');
             window.scrollTo(0, 0);
         }
 
-        // 美食分類篩選器
-        function filterFood(type) {
-            const items = document.querySelectorAll('.food-item');
-            items.forEach(item => {
-                if (type === 'all' || item.getAttribute('data-type') === type) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            // 按鈕視覺效果
-            document.querySelectorAll('.food-btn').forEach(btn => {
-                btn.classList.remove('bg-stone-800', 'text-white');
-                btn.classList.add('bg-white', 'text-stone-800');
-            });
-            event.target.classList.add('bg-stone-800', 'text-white');
-            event.target.classList.remove('bg-white', 'text-stone-800');
-        }
-
-        // 初始化 Chart.js
         window.onload = function() {
             const ctx = document.getElementById('travelChart').getContext('2d');
             new Chart(ctx, {
-                type: 'line',
+                type: 'bar',
                 data: {
-                    labels: ['D1:博多', 'D2:太宰府', 'D3:市區', 'D4:門司港', 'D5:返程'],
+                    labels: ['D1', 'D2', 'D3', 'D4', 'D5'],
                     datasets: [{
-                        label: '估計總移動時間 (分鐘)',
-                        data: [45, 90, 60, 110, 40],
-                        borderColor: '#b91c1c',
-                        backgroundColor: 'rgba(185, 28, 28, 0.1)',
-                        borderWidth: 4,
-                        fill: true,
-                        tension: 0.4,
-                        pointBackgroundColor: '#b91c1c',
-                        pointRadius: 6
+                        label: '估計交通負荷',
+                        data: [40, 90, 60, 110, 40],
+                        backgroundColor: '#c2410c',
+                        borderRadius: 10
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: {
-                        y: { beginAtZero: true, grid: { color: '#eee' } },
-                        x: { grid: { display: false } }
-                    }
+                    scales: { x: { grid: { display: false } } }
                 }
             });
         };
