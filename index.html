@@ -3,12 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>福岡・熊本 秋楓悠旅｜2026 完整 SPA 行程</title>
-
+<title>福岡・熊本 秋楓悠旅｜2026 低強度雙頁行程</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <style>
 body{
     font-family:"Microsoft JhengHei","微軟正黑體",sans-serif;
@@ -19,54 +16,36 @@ body{
     scroll-behavior:smooth;
     padding-bottom:90px;
 }
-
-.tab-content{ display:none; }
-
-.tab-content.active{
-    display:block;
-    animation:fadeIn .35s ease;
-}
-
+.page{display:none;}
+.page.active{display:block;animation:fadeIn .35s ease;}
 @keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{opacity:0;transform:translateY(8px);}
+    to{opacity:1;transform:translateY(0);}
 }
-
 .nav-link{
     transition:.25s;
     cursor:pointer;
 }
-
 .nav-active{
     color:#c2410c;
     border-bottom:3px solid #c2410c;
     font-weight:bold;
 }
-
 .card-style{
     background:white;
     border:2px solid #4b5563;
     border-radius:18px;
     padding:20px;
 }
-
 .timeline-row{
     display:flex;
     gap:18px;
     margin-bottom:18px;
 }
-
 .time-col{
     width:78px;
     flex-shrink:0;
 }
-
 .time-label{
     background:#44403c;
     color:white;
@@ -76,27 +55,22 @@ body{
     font-size:.8rem;
     font-weight:bold;
 }
-
 .content-col{
     flex:1;
     border-left:2px solid #d6d3d1;
     padding-left:16px;
 }
-
 .map-link{
     color:#1d4ed8;
     text-decoration:underline;
     font-weight:bold;
 }
-
-.food-card.hidden{
+.hidden{
     display:none;
 }
-
 .mobile-nav{
     box-shadow:0 -4px 18px rgba(0,0,0,.08);
 }
-
 .tag{
     display:inline-block;
     font-size:.75rem;
@@ -107,522 +81,172 @@ body{
     margin-right:6px;
     margin-top:6px;
 }
-
 .warning-box{
     background:#fff7ed;
     border:2px solid #fdba74;
     border-radius:18px;
     padding:18px;
 }
-
+.soft-box{
+    background:#f8fafc;
+    border:2px solid #cbd5e1;
+    border-radius:18px;
+    padding:18px;
+}
+.route-list a{
+    display:block;
+    margin-top:6px;
+}
 @media(min-width:768px){
-    .mobile-nav{
-        display:none;
-    }
+    .mobile-nav{display:none;}
 }
 </style>
 </head>
 
 <body class="leading-relaxed">
 
-<!-- TOP NAV -->
 <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200">
-
 <div class="max-w-6xl mx-auto px-5 h-16 flex justify-between items-center">
-
-<div class="font-black text-xl md:text-2xl">
-🍁 福岡・熊本 秋旅
-</div>
-
+<div class="font-black text-xl md:text-2xl">🍁 福岡・熊本秋旅</div>
 <div class="hidden md:flex gap-8 text-sm">
-
-<button onclick="switchTab('summary')" class="nav-link nav-active" id="btn-summary">
-總覽
-</button>
-
-<button onclick="switchTab('itinerary')" class="nav-link" id="btn-itinerary">
-行程
-</button>
-
-<button onclick="switchTab('food')" class="nav-link" id="btn-food">
-美食
-</button>
-
-<button onclick="switchTab('souvenir')" class="nav-link" id="btn-souvenir">
-伴手禮
-</button>
-
-<button onclick="switchTab('prep')" class="nav-link" id="btn-prep">
-準備
-</button>
-
+<button onclick="switchPage('trip')" class="nav-link nav-active" id="btn-trip">行程</button>
+<button onclick="switchPage('food')" class="nav-link" id="btn-food">美食</button>
+<button onclick="switchPage('rain')" class="nav-link" id="btn-rain">雨備</button>
+<button onclick="switchPage('prep')" class="nav-link" id="btn-prep">準備</button>
 </div>
 </div>
 </nav>
 
 <main class="max-w-6xl mx-auto px-5 py-8">
 
-<!-- SUMMARY -->
-<section id="summary" class="tab-content active space-y-8">
+<section id="trip" class="page active space-y-8">
 
 <div class="bg-stone-800 rounded-3xl p-8 text-white">
-
 <h1 class="text-4xl md:text-5xl font-black leading-tight">
 福岡・熊本<br>
-秋楓聖誕悠旅
+低強度秋旅
 </h1>
-
 <p class="mt-4 opacity-80">
-2026 / 11 / 26 - 11 / 30 ｜ 同事 6 人
+2026 / 11 / 26 - 11 / 30 ｜ 6人同事團
 </p>
-
 <p class="mt-2 text-sm opacity-70">
-悠閒美食｜低疲勞｜文化拍照｜聖誕點燈｜大型購物
+少走路｜少轉車｜景點集中｜保留休息｜獨立雨天備案
 </p>
-
 </div>
 
 <div class="grid lg:grid-cols-3 gap-6">
-
 <div class="lg:col-span-2 card-style">
-<h2 class="font-black text-xl mb-5">
-📊 每日體力消耗
-</h2>
-
-<div class="h-72">
-<canvas id="travelChart"></canvas>
-</div>
+<h2 class="font-black text-xl mb-5">📊 調整後體力消耗</h2>
+<div class="h-72"><canvas id="travelChart"></canvas></div>
 </div>
 
 <div class="warning-box">
-
-<h3 class="font-black text-orange-900 text-lg mb-3">
-⚠️ 2026 日本旅遊注意
-</h3>
-
+<h3 class="font-black text-orange-900 text-lg mb-3">為何這樣改</h3>
 <ul class="space-y-3 text-sm leading-loose text-stone-700">
-<li>• 日本免稅新制可能改為「機場退稅」，D5 建議提早 3 小時到機場。</li>
-<li>• 行動電源不可托運，需隨身攜帶。</li>
-<li>• 熊本新幹線建議預約指定席，6 人較容易分開。</li>
-<li>• 太宰府週六中午後極度擁擠，已安排早進早出。</li>
-<li>• 中洲屋台部分店家僅收現金，建議準備日幣。</li>
+<li>• 原版第 3 天把太宰府排在週六，容易遇到參道與星巴克長排隊，低強度下不划算。</li>
+<li>• 原版 Day 4 同時放大濠公園、LaLaport、福岡塔，跨區移動偏多，對 6 人團體較累。</li>
+<li>• 熊本城已是核心重點，熊本日不建議再塞遠距離景點，否則會超出低強度設定。</li>
+<li>• 福岡塔、Canal City、天神地下街、博多站系統最適合做雨備與彈性替換。</li>
+<li>• 6 人同行最重要的是同區域連逛，減少等車、找餐廳、集合耗時。</li>
 </ul>
-
 </div>
-
 </div>
 
 <div class="grid md:grid-cols-4 gap-5">
-
 <div class="card-style">
 <h3 class="font-black mb-2">🏨 住宿</h3>
-<p class="text-sm text-stone-600">
-建議博多站筑紫口周邊。
-</p>
+<p class="text-sm text-stone-600">全程住博多站／天神可直達區最省力。</p>
 </div>
-
 <div class="card-style">
 <h3 class="font-black mb-2">🚄 交通</h3>
-<p class="text-sm text-stone-600">
-Suica + 九州新幹線指定席。
-</p>
+<p class="text-sm text-stone-600">市區用地鐵＋步行，熊本單日新幹線往返。</p>
 </div>
-
 <div class="card-style">
 <h3 class="font-black mb-2">📸 必拍</h3>
-<p class="text-sm text-stone-600">
-太宰府星巴克、熊本城、福岡塔夜景。
-</p>
+<p class="text-sm text-stone-600">熊本城、太宰府樓門、福岡塔夜景。</p>
 </div>
-
 <div class="card-style">
 <h3 class="font-black mb-2">🛍️ 必買</h3>
-<p class="text-sm text-stone-600">
-Menbei、Press Butter Sand、Kumamon。
-</p>
+<p class="text-sm text-stone-600">Menbei、博多通饅頭、太宰府梅枝餅。</p>
+</div>
 </div>
 
-</div>
-
-</section>
-
-<!-- ITINERARY -->
-<section id="itinerary" class="tab-content space-y-12">
-
-<!-- DAY 1 -->
-<div class="card-style">
-
-<div class="flex flex-wrap justify-between gap-4 mb-6">
-
-<div>
-<h2 class="text-2xl font-black text-orange-800">
-Day 1｜11/26（四）
-</h2>
-
-<p class="text-stone-500">
-博多聖誕點燈・中洲夜景
-</p>
-</div>
-
-<div class="text-sm">
-<div class="tag">💴 約 ¥5,000</div>
-<div class="tag">🚶 步行偏多</div>
-<div class="tag">☔ 雨備：Canal City</div>
-</div>
-
-</div>
+<div class="card-style space-y-3">
+<h2 class="text-2xl font-black text-orange-800 mb-4">逐日完整安排</h2>
 
 <div class="timeline-row">
-<div class="time-col"><div class="time-label">16:00</div></div>
+<div class="time-col"><div class="time-label">11/26</div></div>
 <div class="content-col">
-<p class="font-bold">
-抵達福岡機場
-</p>
-<p class="text-sm text-stone-500 mt-1">
-停留：約60分鐘｜入境＋領行李
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=福岡機場">
-Google Route ➔
-</a>
+<p class="font-bold">Day 1｜福岡機場、博多站、JR博多 City、中洲夜景</p>
+<p class="text-sm text-stone-500 mt-1">16:00 福岡機場 → 16:30-17:00 博多站周邊 → 18:00 JR 博多 City → 20:00 中洲屋台或博多站晚餐。</p>
+<div class="route-list text-sm mt-2">
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=福岡機場">福岡機場導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=博多站">博多站導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=JR博多City">JR博多City導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=中洲屋台">中洲屋台導航 ➔</a>
+</div>
+<p class="text-sm text-stone-500 mt-2">步行順序：博多站 → JR 博多 City → 博多站周邊 → 中洲。這天全部壓在博多核心圈，最省力。</p>
 </div>
 </div>
 
 <div class="timeline-row">
-<div class="time-col"><div class="time-label">18:00</div></div>
+<div class="time-col"><div class="time-label">11/27</div></div>
 <div class="content-col">
-<p class="font-bold">
-JR 博多 City 光之街
-</p>
-<p class="text-sm text-stone-500 mt-1">
-📸 必拍：2F 聖誕樹廣場俯拍燈海
-</p>
-<p class="text-sm text-stone-500">
-擁擠時段：19:00-21:00
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=JR博多City">
-Google Route ➔
-</a>
+<p class="font-bold">Day 2｜熊本城、城彩苑、熊本熊廣場</p>
+<p class="text-sm text-stone-500 mt-1">08:30 博多站搭九州新幹線 → 09:10 熊本站 → 10:00 熊本城 → 12:30 櫻之馬場 城彩苑 → 14:00 熊本熊廣場 → 傍晚返回博多。</p>
+<div class="route-list text-sm mt-2">
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=博多站">博多站導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=熊本站">熊本站導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=熊本城">熊本城導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=城彩苑">城彩苑導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=熊本熊廣場">熊本熊廣場導航 ➔</a>
+</div>
+<p class="text-sm text-stone-500 mt-2">步行順序：熊本站 → 熊本城 → 城彩苑 → 熊本熊廣場。這一天只抓一個城市主軸，不再加遠點。</p>
 </div>
 </div>
 
 <div class="timeline-row">
-<div class="time-col"><div class="time-label">20:00</div></div>
+<div class="time-col"><div class="time-label">11/28</div></div>
 <div class="content-col">
-<p class="font-bold">
-中洲屋台拉麵
-</p>
-<p class="text-sm text-stone-500">
-🍜 河畔夜景＋屋台氛圍
-</p>
-<p class="text-sm text-stone-500">
-交通：博多站 → 地鐵空港線約5分鐘
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=中洲屋台">
-Google Route ➔
-</a>
+<p class="font-bold">Day 3｜太宰府天滿宮、表參道、天神商圈、ワンカルビPREMIUM 天神</p>
+<p class="text-sm text-stone-500 mt-1">10:00 太宰府天滿宮 → 11:30 表參道與梅枝餅 → 14:30 天神地下街／大丸 → 18:00 ワンカルビPREMIUM 天神晚餐。</p>
+<div class="route-list text-sm mt-2">
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=太宰府天滿宮">太宰府天滿宮導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=太宰府表參道">太宰府表參道導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=天神地下街">天神地下街導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ワンカルビPREMIUM+天神">ワンカルビPREMIUM 天神導航 ➔</a>
 </div>
-</div>
-
-<div class="bg-orange-50 rounded-2xl p-4 mt-5 text-sm">
-<b>今日總結：</b>
-第一天以輕鬆適應日本節奏為主，不安排高強度行程。
-</div>
-
-</div>
-
-<!-- DAY 2 -->
-<div class="card-style">
-
-<div class="flex flex-wrap justify-between gap-4 mb-6">
-
-<div>
-<h2 class="text-2xl font-black text-orange-800">
-Day 2｜11/27（五）
-</h2>
-
-<p class="text-stone-500">
-熊本城・城彩苑
-</p>
-</div>
-
-<div class="text-sm">
-<div class="tag">💴 約 ¥18,000</div>
-<div class="tag">🚄 新幹線日</div>
-<div class="tag">☔ 雨備：熊本城博物館</div>
-</div>
-
-</div>
-
-<div class="timeline-row">
-<div class="time-col"><div class="time-label">08:30</div></div>
-<div class="content-col">
-<p class="font-bold">
-博多 → 熊本（九州新幹線）
-</p>
-<p class="text-sm text-stone-500">
-交通：約40分鐘
-</p>
+<p class="text-sm text-stone-500 mt-2">步行順序：太宰府天滿宮 → 表參道 → 吃梅枝餅 → 回天神逛地下街 → 步行到燒肉店。天神站周邊到餐廳約步行 4–7 分鐘。[web:65][web:70]</p>
 </div>
 </div>
 
 <div class="timeline-row">
-<div class="time-col"><div class="time-label">10:00</div></div>
+<div class="time-col"><div class="time-label">11/29</div></div>
 <div class="content-col">
-<p class="font-bold">
-熊本城天守閣
-</p>
-<p class="text-sm text-stone-500">
-停留：約2小時
-</p>
-<p class="text-sm text-stone-500">
-📸 必拍：加藤神社側熊本城全景
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=熊本城">
-Google Route ➔
-</a>
+<p class="font-bold">Day 4｜大濠公園、福岡市美術館、福岡城跡、福岡塔</p>
+<p class="text-sm text-stone-500 mt-1">09:30 大濠公園 → 11:00 福岡市美術館或福岡城跡 → 14:00 回博多休息／購物 → 18:00 福岡塔夜景。</p>
+<div class="route-list text-sm mt-2">
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=大濠公園">大濠公園導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=福岡市美術館">福岡市美術館導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=福岡城跡">福岡城跡導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=福岡塔">福岡塔導航 ➔</a>
+</div>
+<p class="text-sm text-stone-500 mt-2">步行順序：大濠公園 → 福岡市美術館／福岡城跡 → 天神或博多休息後再前往福岡塔。這天以同區慢走為主。</p>
 </div>
 </div>
 
 <div class="timeline-row">
-<div class="time-col"><div class="time-label">12:30</div></div>
+<div class="time-col"><div class="time-label">11/30</div></div>
 <div class="content-col">
-<p class="font-bold">
-櫻之馬場 城彩苑
-</p>
-<p class="text-sm text-stone-500">
-停留：約90分鐘
-</p>
-<p class="text-sm text-stone-500">
-🍴 必吃：馬肉刺身・赤牛丼
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=城彩苑">
-Google Route ➔
-</a>
+<p class="font-bold">Day 5｜櫛田神社、川端通、KITTE 博多、返台</p>
+<p class="text-sm text-stone-500 mt-1">09:00 櫛田神社 → 10:00 川端通 → 11:00 博多麵街道或 KITTE 博多 → 13:00 前往福岡機場。</p>
+<div class="route-list text-sm mt-2">
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=櫛田神社">櫛田神社導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=川端通">川端通導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=KITTE博多">KITTE 博多導航 ➔</a>
+<a class="map-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=福岡機場">福岡機場導航 ➔</a>
 </div>
-</div>
-
-<div class="bg-orange-50 rounded-2xl p-4 mt-5 text-sm">
-<b>今日總結：</b>
-熊本為本次唯一跨城市日，已壓縮移動避免過度疲勞。
-</div>
-
-</div>
-
-<!-- DAY 3 -->
-<div class="card-style">
-
-<div class="flex flex-wrap justify-between gap-4 mb-6">
-
-<div>
-<h2 class="text-2xl font-black text-orange-800">
-Day 3｜11/28（六）
-</h2>
-
-<p class="text-stone-500">
-太宰府・天神購物
-</p>
-</div>
-
-<div class="text-sm">
-<div class="tag">💴 約 ¥10,000</div>
-<div class="tag">📸 拍照日</div>
-<div class="tag">☔ 雨備：天神地下街</div>
-</div>
-
-</div>
-
-<div class="timeline-row">
-<div class="time-col"><div class="time-label">10:00</div></div>
-<div class="content-col">
-<p class="font-bold">
-太宰府天滿宮
-</p>
-<p class="text-sm text-stone-500">
-停留：約2小時
-</p>
-<p class="text-sm text-stone-500">
-📸 必拍：御神牛＋樓門
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=太宰府天滿宮">
-Google Route ➔
-</a>
-</div>
-</div>
-
-<div class="timeline-row">
-<div class="time-col"><div class="time-label">11:30</div></div>
-<div class="content-col">
-<p class="font-bold">
-星巴克 太宰府天滿宮表參道店
-</p>
-<p class="text-sm text-stone-500">
-隈研吾木構建築
-</p>
-<p class="text-sm text-stone-500">
-擁擠時段：11:00-15:00
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=星巴克太宰府">
-Google Route ➔
-</a>
-</div>
-</div>
-
-<div class="timeline-row">
-<div class="time-col"><div class="time-label">14:30</div></div>
-<div class="content-col">
-<p class="font-bold">
-天神地下街購物
-</p>
-<p class="text-sm text-stone-500">
-交通：西鐵電車約35分鐘
-</p>
-</div>
-</div>
-
-<div class="bg-orange-50 rounded-2xl p-4 mt-5 text-sm">
-<b>今日總結：</b>
-週六安排市區購物，避免遠距離移動與觀光塞車。
-</div>
-
-</div>
-
-<!-- DAY 4 -->
-<div class="card-style">
-
-<div class="flex flex-wrap justify-between gap-4 mb-6">
-
-<div>
-<h2 class="text-2xl font-black text-orange-800">
-Day 4｜11/29（日）
-</h2>
-
-<p class="text-stone-500">
-大濠公園・鋼彈・福岡塔
-</p>
-</div>
-
-<div class="text-sm">
-<div class="tag">💴 約 ¥8,000</div>
-<div class="tag">🌇 夜景日</div>
-<div class="tag">☔ 雨備：TeamLab</div>
-</div>
-
-</div>
-
-<div class="timeline-row">
-<div class="time-col"><div class="time-label">09:30</div></div>
-<div class="content-col">
-<p class="font-bold">
-大濠公園
-</p>
-<p class="text-sm text-stone-500">
-📸 必拍：湖畔星巴克倒影
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=大濠公園">
-Google Route ➔
-</a>
-</div>
-</div>
-
-<div class="timeline-row">
-<div class="time-col"><div class="time-label">14:00</div></div>
-<div class="content-col">
-<p class="font-bold">
-LaLaport 福岡 1:1 鋼彈
-</p>
-<p class="text-sm text-stone-500">
-停留：約2小時
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=LaLaport福岡">
-Google Route ➔
-</a>
-</div>
-</div>
-
-<div class="timeline-row">
-<div class="time-col"><div class="time-label">18:00</div></div>
-<div class="content-col">
-<p class="font-bold">
-福岡塔夜景
-</p>
-<p class="text-sm text-stone-500">
-📸 必拍：海濱側全塔點燈
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=福岡塔">
-Google Route ➔
-</a>
-</div>
-</div>
-
-</div>
-
-<!-- DAY 5 -->
-<div class="card-style">
-
-<div class="flex flex-wrap justify-between gap-4 mb-6">
-
-<div>
-<h2 class="text-2xl font-black text-red-700">
-Day 5｜11/30（一）
-</h2>
-
-<p class="text-stone-500">
-博多文化散策・返台
-</p>
-</div>
-
-<div class="text-sm">
-<div class="tag">💴 約 ¥4,000</div>
-<div class="tag">✈️ 返程日</div>
-<div class="tag">☔ 雨備：KITTE 博多</div>
-</div>
-
-</div>
-
-<div class="timeline-row">
-<div class="time-col"><div class="time-label">09:00</div></div>
-<div class="content-col">
-<p class="font-bold">
-櫛田神社＋川端通商店街
-</p>
-<p class="text-sm text-stone-500">
-停留：約90分鐘
-</p>
-<a class="map-link text-sm" target="_blank"
-href="https://maps.google.com/?q=櫛田神社">
-Google Route ➔
-</a>
-</div>
-</div>
-
-<div class="timeline-row">
-<div class="time-col"><div class="time-label">11:00</div></div>
-<div class="content-col">
-<p class="font-bold">
-博多麵街道
-</p>
-<p class="text-sm text-stone-500">
-最後拉麵補完
-</p>
-</div>
-</div>
-
-<div class="timeline-row">
-<div class="time-col"><div class="time-label">13:00</div></div>
-<div class="content-col">
-<p class="font-bold text-red-600">
-前往福岡機場辦理退稅與報到
-</p>
+<p class="text-sm text-stone-500 mt-2">步行順序：櫛田神社 → 川端通 → KITTE 博多 → 博多站 → 機場。返程日只留博多核心圈最安全。</p>
 </div>
 </div>
 
@@ -630,273 +254,205 @@ Google Route ➔
 
 </section>
 
-<!-- FOOD -->
-<section id="food" class="tab-content space-y-8">
+<section id="food" class="page space-y-8">
 
-<div class="flex flex-wrap gap-3">
+<div class="card-style">
+<h2 class="text-2xl font-black mb-4">🍜 美食安排建議</h2>
 
-<button onclick="filterFood('all',this)" class="food-btn bg-orange-700 text-white px-4 py-2 rounded-full text-sm">
-全部
-</button>
-
-<button onclick="filterFood('ramen',this)" class="food-btn bg-white border px-4 py-2 rounded-full text-sm">
-拉麵
-</button>
-
-<button onclick="filterFood('classic',this)" class="food-btn bg-white border px-4 py-2 rounded-full text-sm">
-經典名店
-</button>
-
-<button onclick="filterFood('dessert',this)" class="food-btn bg-white border px-4 py-2 rounded-full text-sm">
-甜點
-</button>
-
+<div class="grid md:grid-cols-2 gap-5 text-sm">
+<div>
+<p class="font-bold mb-2">適合保留</p>
+<ul class="space-y-2">
+<li>• 博多一雙、本店一蘭、博多一幸舍。</li>
+<li>• 菅乃屋馬刺、博多華味鳥。</li>
+<li>• 太宰府梅枝餅、Press Butter Sand。</li>
+</ul>
+</div>
+<div>
+<p class="font-bold mb-2">建議彈性</p>
+<ul class="space-y-2">
+<li>• I’m Donut? 容易排隊，建議有空再去。</li>
+<li>• 中洲屋台改成天氣好時的彈性餐。</li>
+<li>• 熊本午餐建議先訂位，降低找店時間。</li>
+</ul>
+</div>
+</div>
 </div>
 
+<div class="card-style">
+<h2 class="text-2xl font-black mb-4">推薦清單</h2>
 <div class="grid md:grid-cols-2 gap-5">
 
-<!-- RAMEN -->
-<div class="food-card ramen card-style">
+<div class="soft-box">
 <h3 class="font-black text-red-800 text-xl">博多一雙 本店</h3>
-<p class="text-sm mt-2">豚骨卡布奇諾，極度濃郁。</p>
-<a href="https://maps.google.com/?q=博多一雙本店" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+<p class="text-sm mt-2">濃郁豚骨風味，適合抵達日或返程前補一餐。</p>
+<a href="https://www.google.com/maps/search/?api=1&query=博多一雙本店" target="_blank" class="map-link text-sm">店面導航 ➔</a>
 </div>
 
-<div class="food-card ramen card-style">
+<div class="soft-box">
 <h3 class="font-black text-red-800 text-xl">一蘭拉麵 總本店</h3>
-<p class="text-sm mt-2">中洲地標，24H 經典之味。</p>
-<a href="https://maps.google.com/?q=一蘭拉麵總本店" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+<p class="text-sm mt-2">中洲地標，適合安排成夜間自由選項。</p>
+<a href="https://www.google.com/maps/search/?api=1&query=一蘭拉麵總本店" target="_blank" class="map-link text-sm">店面導航 ➔</a>
 </div>
 
-<div class="food-card ramen card-style">
-<h3 class="font-black text-red-800 text-xl">博多一幸舍</h3>
-<p class="text-sm mt-2">博多站內，泡系創始名店。</p>
-<a href="https://maps.google.com/?q=博多一幸舍總本店" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+<div class="soft-box">
+<h3 class="font-black text-red-800 text-xl">菅乃屋 熊本</h3>
+<p class="text-sm mt-2">熊本代表級馬刺料理，最適合放在熊本日。</p>
+<a href="https://www.google.com/maps/search/?api=1&query=菅乃屋熊本" target="_blank" class="map-link text-sm">店面導航 ➔</a>
 </div>
 
-<div class="food-card ramen card-style">
+<div class="soft-box">
+<h3 class="font-black text-red-800 text-xl">梅枝餅 太宰府</h3>
+<p class="text-sm mt-2">太宰府參道必吃，建議排在參拜後或午茶時段。</p>
+<a href="https://www.google.com/maps/search/?api=1&query=太宰府梅枝餅" target="_blank" class="map-link text-sm">店面導航 ➔</a>
+</div>
+
+<div class="soft-box">
+<h3 class="font-black text-red-800 text-xl">ワンカルビPREMIUM 天神</h3>
+<p class="text-sm mt-2">天神人氣國產牛吃到飽，最適合 Day 3 晚餐。</p>
+<a href="https://www.google.com/maps/search/?api=1&query=ワンカルビPREMIUM+天神" target="_blank" class="map-link text-sm">店面導航 ➔</a>
+</div>
+
+<div class="soft-box">
 <h3 class="font-black text-red-800 text-xl">拉麵競技場</h3>
-<p class="text-sm mt-2">博多運河城，8家名店集合。</p>
-<a href="https://maps.google.com/?q=拉麵競技場福岡" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+<p class="text-sm mt-2">博多運河城內，多人同行時可降低找餐壓力。</p>
+<a href="https://www.google.com/maps/search/?api=1&query=ラーメン競技場福岡" target="_blank" class="map-link text-sm">店面導航 ➔</a>
 </div>
 
-<!-- CLASSIC -->
-<div class="food-card classic card-style">
-<h3 class="font-black text-red-800 text-xl">稚加榮 (割烹)</h3>
-<p class="text-sm mt-2">巨型魚池，午間明太子吃到飽。</p>
-<a href="https://maps.google.com/?q=稚加榮福岡本店" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+</div>
 </div>
 
-<div class="food-card classic card-style">
-<h3 class="font-black text-red-800 text-xl">博多華味鳥</h3>
-<p class="text-sm mt-2">九州名物水炊鍋，膠原蛋白濃郁。</p>
-<a href="https://maps.google.com/?q=博多華味鳥" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+</section>
+
+<section id="rain" class="page space-y-8">
+
+<div class="card-style">
+<h2 class="text-2xl font-black mb-4">☔ 獨立雨天備案頁</h2>
+<p class="text-sm text-stone-500 mb-5">這一頁只放雨天可直接替換的方案，現場可以快速切換。</p>
+
+<div class="grid md:grid-cols-2 gap-5 text-sm">
+<div class="warning-box">
+<h3 class="font-black mb-2">福岡市區雨備</h3>
+<ul class="space-y-2">
+<li>• Canal City Hakata。</li>
+<li>• KITTE 博多／博多阪急。</li>
+<li>• 天神地下街。</li>
+<li>• 福岡市美術館或 teamLab Forest。</li>
+</ul>
 </div>
 
-<div class="food-card classic card-style">
-<h3 class="font-black text-red-800 text-xl">菅乃屋 (熊本)</h3>
-<p class="text-sm mt-2">極致馬刺料理，熊本必吃。</p>
-<a href="https://maps.google.com/?q=菅乃屋熊本" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+<div class="warning-box">
+<h3 class="font-black mb-2">熊本雨備</h3>
+<ul class="space-y-2">
+<li>• 熊本博物館。</li>
+<li>• 櫻之馬場 城彩苑室內區。</li>
+<li>• 熊本熊廣場。</li>
+<li>• 熊本車站商場與百貨公司。</li>
+</ul>
+</div>
 </div>
 
-<div class="food-card classic card-style">
-<h3 class="font-black text-red-800 text-xl">One Karubi Premium</h3>
-<p class="text-sm mt-2">中洲高品質燒肉吃到飽。</p>
-<a href="https://maps.google.com/?q=One+Karubi+Premium+福岡" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+<div class="warning-box mt-5">
+<h3 class="font-black mb-2">替換原則</h3>
+<p class="text-sm leading-7">
+若降雨或風大，就把原本的公園、塔景、商店街走讀，直接換成同區室內購物與餐飲。
+這樣不用重新拉長路線，也比較符合低強度行程。
+</p>
+</div>
 </div>
 
-<!-- DESSERT -->
-<div class="food-card dessert card-style">
-<h3 class="font-black text-red-800 text-xl">I'm Donut? 天神</h3>
-<p class="text-sm mt-2">生甜甜圈名店，每日大排長龍。</p>
-<a href="https://maps.google.com/?q=I'm+Donut+福岡" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+<div class="card-style">
+<h2 class="text-2xl font-black mb-4">雨天替換範例</h2>
+
+<div class="timeline-row">
+<div class="time-col"><div class="time-label">例 1</div></div>
+<div class="content-col">
+<p class="font-bold">原本要去大濠公園 → 改成福岡市美術館＋天神地下街</p>
+<p class="text-sm text-stone-500 mt-1">維持市區移動，室內比重更高，不影響午餐與晚餐節奏。</p>
+</div>
 </div>
 
-<div class="food-card dessert card-style">
-<h3 class="font-black text-red-800 text-xl">梅枝餅 (太宰府)</h3>
-<p class="text-sm mt-2">現烤紅豆餡餅，參道必買。</p>
-<a href="https://maps.google.com/?q=太宰府梅枝餅" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+<div class="timeline-row">
+<div class="time-col"><div class="time-label">例 2</div></div>
+<div class="content-col">
+<p class="font-bold">原本要去福岡塔 → 改成 Canal City 或博多站商場</p>
+<p class="text-sm text-stone-500 mt-1">保留購物與餐飲，直接刪掉容易受天氣影響的海濱停留。</p>
+</div>
 </div>
 
-<div class="food-card dessert card-style">
-<h3 class="font-black text-red-800 text-xl">伊藤園 茶寮</h3>
-<p class="text-sm mt-2">精緻抹茶甜點與聖代。</p>
-<a href="https://maps.google.com/?q=茶寮伊藤園太宰府" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
+<div class="timeline-row">
+<div class="time-col"><div class="time-label">例 3</div></div>
+<div class="content-col">
+<p class="font-bold">原本要去太宰府參道 → 改成天神百貨與地下街</p>
+<p class="text-sm text-stone-500 mt-1">週末人潮與雨天排隊都避開，舒適度最高。</p>
 </div>
-
-<div class="food-card classic card-style">
-<h3 class="font-black text-red-800 text-xl">中洲屋台拉麵</h3>
-<p class="text-sm mt-2">夜晚河畔限定，道地路邊攤。</p>
-<a href="https://maps.google.com/?q=中洲屋台" target="_blank" class="map-link text-sm">
-店面導航 ➔
-</a>
 </div>
 
 </div>
 
 </section>
 
-<!-- SOUVENIR -->
-<section id="souvenir" class="tab-content">
+<section id="prep" class="page space-y-8">
+
 <div class="card-style">
-<h2 class="text-2xl font-black mb-5">
-🛍️ 必買伴手禮
-</h2>
-
-<div class="grid md:grid-cols-2 gap-6 text-sm">
-
-<ul class="space-y-3">
-<li>• 福太郎 Menbei 明太子仙貝</li>
-<li>• Press Butter Sand 福岡限定</li>
-<li>• 博多通饅頭</li>
-<li>• 阿蘇牛乳餅乾</li>
-</ul>
-
-<ul class="space-y-3">
-<li>• Panasonic 美容電器</li>
-<li>• Kumamon 周邊</li>
-<li>• 九州限定 Starbucks 杯</li>
-<li>• 唐吉訶德藥妝補貨</li>
-</ul>
-
-</div>
-</div>
-</section>
-
-<!-- PREP -->
-<section id="prep" class="tab-content">
-<div class="card-style">
-<h2 class="text-2xl font-black mb-6">
-🎒 行前準備
-</h2>
+<h2 class="text-2xl font-black mb-4">🎒 低強度準備</h2>
 
 <div class="grid md:grid-cols-2 gap-8 text-sm">
-
 <ul class="space-y-4">
-<li>✓ Visit Japan Web 提前完成</li>
-<li>✓ 行動電源隨身攜帶</li>
-<li>✓ Suica 儲值 ¥10,000</li>
+<li>✓ 住宿固定在博多或天神。</li>
+<li>✓ 熊本當天先訂熊本城附近午餐。</li>
+<li>✓ 太宰府安排平日早上。</li>
 </ul>
-
 <ul class="space-y-4">
-<li>✓ D5 提早3小時到機場</li>
-<li>✓ 11月底福岡約 8-16 度</li>
-<li>✓ 雨天建議攜帶折疊傘</li>
+<li>✓ 帶雨傘與防水鞋。</li>
+<li>✓ 回程機場預留 3 小時。</li>
+<li>✓ 6 人群組先約集合點。</li>
 </ul>
-
 </div>
 </div>
+
+<div class="card-style">
+<h2 class="text-2xl font-black mb-4">行前小提醒</h2>
+<ul class="space-y-3 text-sm">
+<li>• 行動電源隨身帶，不要托運。</li>
+<li>• 車站內與大型商場很適合臨時休息。</li>
+<li>• 若某天覺得累，先砍景點，不要砍用餐。</li>
+<li>• 每天最多保留 3 個主要動點，最符合低強度。</li>
+</ul>
+</div>
+
 </section>
 
 </main>
 
-<!-- MOBILE NAV -->
 <div class="mobile-nav fixed bottom-0 left-0 right-0 bg-white border-t border-stone-200 md:hidden z-50">
-
-<div class="grid grid-cols-5 text-center text-xs">
-
-<button onclick="switchTab('summary')" class="py-3">
-🏠<br>總覽
-</button>
-
-<button onclick="switchTab('itinerary')" class="py-3">
-🗓️<br>行程
-</button>
-
-<button onclick="switchTab('food')" class="py-3">
-🍜<br>美食
-</button>
-
-<button onclick="switchTab('souvenir')" class="py-3">
-🛍️<br>伴手禮
-</button>
-
-<button onclick="switchTab('prep')" class="py-3">
-🎒<br>準備
-</button>
-
+<div class="grid grid-cols-4 text-center text-xs">
+<button onclick="switchPage('trip')" class="py-3">🗓️<br>行程</button>
+<button onclick="switchPage('food')" class="py-3">🍜<br>美食</button>
+<button onclick="switchPage('rain')" class="py-3">☔<br>雨備</button>
+<button onclick="switchPage('prep')" class="py-3">🎒<br>準備</button>
 </div>
 </div>
 
 <script>
-function switchTab(tabId){
-    document.querySelectorAll('.tab-content').forEach(tab=>{
-        tab.classList.remove('active');
-    });
-
-    document.getElementById(tabId).classList.add('active');
-
-    document.querySelectorAll('.nav-link').forEach(btn=>{
-        btn.classList.remove('nav-active');
-    });
-
-    const activeBtn = document.getElementById('btn-' + tabId);
-    if(activeBtn){
-        activeBtn.classList.add('nav-active');
-    }
-
-    window.scrollTo({
-        top:0,
-        behavior:'smooth'
-    });
+function switchPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('nav-active'));
+    const btn=document.getElementById('btn-'+id);
+    if(btn) btn.classList.add('nav-active');
+    window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function filterFood(category,btn){
-
-    document.querySelectorAll('.food-card').forEach(card=>{
-
-        if(category === 'all'){
-            card.classList.remove('hidden');
-        }else{
-            if(card.classList.contains(category)){
-                card.classList.remove('hidden');
-            }else{
-                card.classList.add('hidden');
-            }
-        }
-    });
-
-    document.querySelectorAll('.food-btn').forEach(b=>{
-        b.classList.remove('bg-orange-700','text-white');
-        b.classList.add('bg-white');
-    });
-
-    btn.classList.add('bg-orange-700','text-white');
-}
-
-window.onload = function(){
-
-    const ctx = document.getElementById('travelChart').getContext('2d');
-
+window.onload=function(){
+    const ctx=document.getElementById('travelChart').getContext('2d');
     new Chart(ctx,{
         type:'bar',
         data:{
             labels:['D1','D2','D3','D4','D5'],
             datasets:[{
                 label:'體力消耗',
-                data:[45,90,65,60,35],
+                data:[25,55,35,30,20],
                 backgroundColor:'#c2410c',
                 borderRadius:10
             }]
@@ -904,20 +460,8 @@ window.onload = function(){
         options:{
             responsive:true,
             maintainAspectRatio:false,
-            plugins:{
-                legend:{
-                    display:false
-                },
-                tooltip:{
-                    enabled:true
-                }
-            },
-            scales:{
-                y:{
-                    beginAtZero:true,
-                    max:100
-                }
-            }
+            plugins:{legend:{display:false}},
+            scales:{y:{beginAtZero:true,max:100}}
         }
     });
 }
